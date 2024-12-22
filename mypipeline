@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    tools{
+        maven "maven3.9.9"
+}
+    stages {
+        stage('clone') {
+            steps {
+                echo 'Clone the project'
+                git branch: 'main', url: 'https://github.com/DpkTest/ganesh.git'
+            }
+        }
+    
+        stage('Build the project') {
+            steps {
+                echo 'Build'
+                sh 'ls'
+                sh 'mvn clean install'
+            }
+        }
+    
+        stage('Run') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    
+        stage('Finish') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
